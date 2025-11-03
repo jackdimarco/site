@@ -1,0 +1,59 @@
+import { siteConfig } from "@/config/site";
+import {
+  GitHubIcon,
+  LinkedInIcon,
+  TwitterIcon,
+  EmailIcon,
+} from "@/lib/icons";
+import type { ReactNode } from "react";
+
+interface SocialLink {
+  name: string;
+  url: string;
+  icon: ReactNode;
+}
+
+export function SocialLinks() {
+  const socialLinks: SocialLink[] = [
+    {
+      name: "GitHub",
+      url: siteConfig.links.github,
+      icon: <GitHubIcon />,
+    },
+    {
+      name: "LinkedIn",
+      url: siteConfig.links.linkedin,
+      icon: <LinkedInIcon />,
+    },
+    {
+      name: "Twitter",
+      url: siteConfig.links.twitter,
+      icon: <TwitterIcon />,
+    },
+    {
+      name: "Email",
+      url: siteConfig.links.email,
+      icon: <EmailIcon />,
+    },
+  ];
+
+  return (
+    <nav
+      className="flex flex-wrap gap-4 items-center w-full max-w-2xl"
+      aria-label="Social media links"
+    >
+      {socialLinks.map((link) => (
+        <a
+          key={link.name}
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center text-gray-700 dark:text-gray-300"
+          aria-label={`Visit ${link.name} profile`}
+        >
+          {link.icon}
+        </a>
+      ))}
+    </nav>
+  );
+}

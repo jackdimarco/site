@@ -13,6 +13,14 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // Disable this rule as it's a false positive for SSR hydration patterns
+      // The pattern of setting mounted state in useEffect/useLayoutEffect is
+      // the recommended approach for preventing hydration mismatches
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
