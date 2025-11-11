@@ -24,7 +24,17 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="absolute top-8 right-0 w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 flex items-center justify-center"
+      className="absolute top-8 right-0 w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+      style={{
+        backgroundColor: 'var(--color-muted)',
+        color: 'var(--color-muted-foreground)',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = 'var(--color-accent)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = 'var(--color-muted)';
+      }}
       aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
       type="button"
     >
