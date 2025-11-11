@@ -39,7 +39,7 @@ export function SocialLinks() {
 
   return (
     <nav
-      className="flex flex-wrap gap-4 items-center w-full max-w-2xl"
+      className="flex gap-3 items-center"
       aria-label="Social media links"
     >
       {socialLinks.map((link) => (
@@ -48,7 +48,7 @@ export function SocialLinks() {
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-14 h-14 rounded-lg flex items-center justify-center theme-button"
+          className="w-10 h-10 rounded-lg flex items-center justify-center theme-button"
           aria-label={`Visit ${link.name} profile`}
         >
           {link.icon}
