@@ -1,5 +1,3 @@
-"use client";
-
 import { siteConfig } from "@/config/site";
 import {
   GitHubIcon,
@@ -50,17 +48,7 @@ export function SocialLinks() {
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-14 h-14 rounded-lg flex items-center justify-center transition-colors"
-          style={{
-            backgroundColor: 'var(--color-muted)',
-            color: 'var(--color-muted-foreground)',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'var(--color-accent)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'var(--color-muted)';
-          }}
+          className="w-14 h-14 rounded-lg flex items-center justify-center theme-button"
           aria-label={`Visit ${link.name} profile`}
         >
           {link.icon}

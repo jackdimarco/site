@@ -24,17 +24,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="absolute top-8 right-0 w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
-      style={{
-        backgroundColor: 'var(--color-muted)',
-        color: 'var(--color-muted-foreground)',
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = 'var(--color-accent)';
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = 'var(--color-muted)';
-      }}
+      className="fixed bottom-6 right-6 w-12 h-12 rounded-full flex items-center justify-center theme-button shadow-lg z-50"
       aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
       type="button"
     >
