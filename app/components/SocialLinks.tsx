@@ -1,10 +1,4 @@
-import { siteConfig } from "@/config/site";
-import {
-  GitHubIcon,
-  LinkedInIcon,
-  TwitterIcon,
-  EmailIcon,
-} from "@/lib/icons";
+import { GitHubIcon, LinkedInIcon, TwitterIcon, EmailIcon } from "@/lib/icons";
 import type { ReactNode } from "react";
 
 interface SocialLink {
@@ -13,45 +7,43 @@ interface SocialLink {
   icon: ReactNode;
 }
 
-export function SocialLinks() {
-  const socialLinks: SocialLink[] = [
-    {
-      name: "GitHub",
-      url: siteConfig.links.github,
-      icon: <GitHubIcon />,
-    },
-    {
-      name: "LinkedIn",
-      url: siteConfig.links.linkedin,
-      icon: <LinkedInIcon />,
-    },
-    {
-      name: "Twitter",
-      url: siteConfig.links.twitter,
-      icon: <TwitterIcon />,
-    },
-    {
-      name: "Email",
-      url: siteConfig.links.email,
-      icon: <EmailIcon />,
-    },
-  ];
+const SOCIAL_LINKS: SocialLink[] = [
+  {
+    name: "GitHub",
+    url: "https://github.com/jackdimarco",
+    icon: <GitHubIcon />,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/jackdimarco",
+    icon: <LinkedInIcon />,
+  },
+  {
+    name: "Twitter",
+    url: "https://x.com/jackbdimarco",
+    icon: <TwitterIcon />,
+  },
+  {
+    name: "Email",
+    url: "mailto:hello@jdimarco.com",
+    icon: <EmailIcon />,
+  },
+];
 
+export function SocialLinks() {
   return (
-    <nav
-      className="flex gap-3 items-center"
-      aria-label="Social media links"
-    >
-      {socialLinks.map((link) => (
+    <nav className="flex flex-wrap gap-4 items-center" aria-label="Social media links">
+      {SOCIAL_LINKS.map((link) => (
         <a
           key={link.name}
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-10 h-10 rounded-lg flex items-center justify-center theme-button"
+          className="flex items-center gap-2 text-muted hover:text-foreground transition-colors"
           aria-label={`Visit ${link.name} profile`}
         >
-          {link.icon}
+          <span className="w-5 h-5">{link.icon}</span>
+          <span className="text-base">{link.name}</span>
         </a>
       ))}
     </nav>

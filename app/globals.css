@@ -28,7 +28,6 @@ body {
   color: var(--color-foreground);
 }
 
-/* Theme-aware button styles */
 .theme-button {
   background-color: var(--color-muted);
   color: var(--color-muted-foreground);
@@ -40,4 +39,12 @@ body {
 
 .text-muted {
   color: var(--color-muted-foreground);
+}
+
+.text-body {
+  @apply text-base md:text-lg leading-relaxed;
+}
+
+.text-heading {
+  @apply text-4xl md:text-5xl font-bold tracking-tight;
 }
