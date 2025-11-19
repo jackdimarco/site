@@ -8,7 +8,7 @@ type LinkProps = Omit<ComponentProps<typeof NextLink>, "href"> & {
 export function Link({ href, children, className, ...props }: LinkProps) {
   const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
 
-  const baseClassName = className ?? "underline hover:opacity-70 transition-opacity";
+  const baseClassName = className ?? "text-accent hover:opacity-70 transition-opacity";
 
   if (isExternal) {
     return (

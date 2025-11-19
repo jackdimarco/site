@@ -3,38 +3,43 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-  --color-background: #faf8f5;
-  --color-foreground: #1a1613;
-  --color-muted: #f0ebe5;
-  --color-muted-foreground: #6b6460;
-  --color-border: #e5dfd7;
-  --color-accent: #d4ccc3;
-  --color-accent-foreground: #1a1613;
+  --color-background: #0a0e14;
+  --color-foreground: #f0f4f8;
+  --color-muted: #151b24;
+  --color-muted-foreground: #6b7d94;
+  --color-border: #29324f;
+  --color-accent: #c2fe0b;
+  --color-accent-foreground: #0a0e14;
+  --color-cyan: #01ffff;
+  --color-red: #ff0d1a;
+  --color-lime: #c2fe0b;
 }
 
 .dark {
-  --color-background: #1a1613;
-  --color-foreground: #faf8f5;
-  --color-muted: #242220;
-  --color-muted-foreground: #a39d96;
-  --color-border: #353330;
-  --color-accent: #2d2a27;
-  --color-accent-foreground: #faf8f5;
+  --color-background: #0a0e14;
+  --color-foreground: #f0f4f8;
+  --color-muted: #151b24;
+  --color-muted-foreground: #6b7d94;
+  --color-border: #29324f;
+  --color-accent: #c2fe0b;
+  --color-accent-foreground: #0a0e14;
 }
 
 body {
-  font-family: var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   background-color: var(--color-background);
   color: var(--color-foreground);
 }
 
 .theme-button {
-  background-color: var(--color-muted);
+  background-color: transparent;
   color: var(--color-muted-foreground);
+  border: 1px solid var(--color-border);
 }
 
 .theme-button:hover {
-  background-color: var(--color-accent);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
 }
 
 .text-muted {
@@ -46,7 +51,19 @@ body {
 }
 
 .text-heading {
-  @apply text-4xl md:text-5xl font-bold tracking-tight;
+  @apply text-4xl md:text-5xl font-bold tracking-tight uppercase;
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-cyan {
+  color: var(--color-cyan);
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
 }
 
 .border-dotted-spaced {

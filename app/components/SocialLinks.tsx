@@ -39,7 +39,7 @@ export function SocialLinks() {
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-muted hover:text-foreground transition-colors"
+          className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
           aria-label={`Visit ${link.name} profile`}
         >
           <span className="w-5 h-5">{link.icon}</span>

@@ -5,7 +5,7 @@ import { JOBS } from "@/lib/data";
 export function Experience() {
   return (
     <section className="space-y-4">
-      <h2 className="text-2xl font-semibold">Experience</h2>
+      <h2 className="text-2xl font-bold uppercase tracking-wide">Experience</h2>
       <div className="border-y border-dotted-spaced divide-dotted-spaced">
         {JOBS.map((job) => (
           <div
@@ -30,8 +30,8 @@ export function Experience() {
               <div className="min-w-0">
                 <div className="flex items-baseline gap-2 flex-wrap">
                   {job.companyUrl ? (
-                    <Link href={job.companyUrl} className="hover:opacity-70 transition-opacity">
-                      <span className="font-bold">{job.company}</span>
+                    <Link href={job.companyUrl} className="text-accent hover:opacity-70 transition-opacity font-bold">
+                      {job.company}
                     </Link>
                   ) : (
                     <span className="font-bold">{job.company}</span>

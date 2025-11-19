@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Serif, Inter } from "next/font/google";
+import { Space_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
-const ibmPlexSerif = IBM_Plex_Serif({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-});
-
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -40,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${ibmPlexSerif.variable} ${inter.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${spaceMono.variable} antialiased`}
       >
         <ThemeProvider>
           <div className="min-h-screen flex justify-center px-6">
