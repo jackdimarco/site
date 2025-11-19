@@ -11,22 +11,22 @@ const SOCIAL_LINKS: SocialLink[] = [
   {
     name: "GitHub",
     url: "https://github.com/jackdimarco",
-    icon: <GitHubIcon />,
+    icon: <GitHubIcon className="w-5 h-5" />,
   },
   {
     name: "LinkedIn",
     url: "https://linkedin.com/in/jackdimarco",
-    icon: <LinkedInIcon />,
+    icon: <LinkedInIcon className="w-5 h-5" />,
   },
   {
     name: "Twitter",
     url: "https://x.com/jackbdimarco",
-    icon: <TwitterIcon />,
+    icon: <TwitterIcon className="w-5 h-5" />,
   },
   {
     name: "Email",
     url: "mailto:hello@jdimarco.com",
-    icon: <EmailIcon />,
+    icon: <EmailIcon className="w-5 h-5" />,
   },
 ];
 

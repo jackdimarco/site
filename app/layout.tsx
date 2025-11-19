@@ -18,6 +18,17 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Jack DiMarco",
   description: "Jack DiMarco's personal website",
+  openGraph: {
+    title: "Jack DiMarco",
+    description: "Jack DiMarco's personal website",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: "Jack DiMarco",
+    description: "Jack DiMarco's personal website",
+  },
 };
 
 export default function RootLayout({

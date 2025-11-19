@@ -1,51 +1,6 @@
 import Image from "next/image";
 import { Link } from "./Link";
-
-interface Job {
-  company: string;
-  companyUrl?: string;
-  logo?: string;
-  role: string;
-  period: string;
-}
-
-const JOBS: Job[] = [
-  {
-    company: "Salesforce",
-    companyUrl: "https://www.salesforce.com",
-    logo: "/logos/salesforce_logo.jpg",
-    role: "Software Engineer",
-    period: "2022 - Present",
-  },
-  {
-    company: "Canary",
-    companyUrl: "https://www.canarystudent.com",
-    logo: "/logos/canary_logo.jpg",
-    role: "Software Engineer",
-    period: "2021",
-  },
-  {
-    company: "ADP",
-    companyUrl: "https://www.adp.com",
-    logo: "/logos/adp_logo.jpg",
-    role: "Software Engineer Intern",
-    period: "2020",
-  },
-  {
-    company: "Idenhaus",
-    companyUrl: "https://www.idenhaus.com",
-    logo: "/logos/idenhaus_logo.jpg",
-    role: "Software Engineer Intern",
-    period: "2019",
-  },
-  {
-    company: "Precisely",
-    companyUrl: "https://www.precisely.com",
-    logo: "/logos/precisely_logo.jpg",
-    role: "Software Engineer Intern",
-    period: "2018",
-  },
-];
+import { JOBS } from "@/lib/data";
 
 export function Experience() {
   return (
@@ -66,6 +21,7 @@ export function Experience() {
                     width={30}
                     height={30}
                     className="object-contain rounded-sm"
+                    loading="lazy"
                   />
                 ) : (
                   <span className="text-xs text-muted">Logo</span>

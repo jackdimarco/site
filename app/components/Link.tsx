@@ -1,13 +1,11 @@
 import NextLink from "next/link";
-import type { ReactNode } from "react";
+import type { ComponentProps } from "react";
 
-interface LinkProps {
+type LinkProps = Omit<ComponentProps<typeof NextLink>, "href"> & {
   href: string;
-  children: ReactNode;
-  className?: string;
-}
+};
 
-export function Link({ href, children, className }: LinkProps) {
+export function Link({ href, children, className, ...props }: LinkProps) {
   const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:");
 
   const baseClassName = className ?? "underline hover:opacity-70 transition-opacity";
@@ -21,7 +19,7 @@ export function Link({ href, children, className }: LinkProps) {
   }
 
   return (
-    <NextLink href={href} className={baseClassName}>
+    <NextLink href={href} className={baseClassName} {...props}>
       {children}
     </NextLink>
   );
