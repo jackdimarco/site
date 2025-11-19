@@ -14,7 +14,7 @@ export function About() {
         </p>
         <p className="text-body text-muted">
           I currently live in Atlanta, Georgia with my beautiful wife and our dog{" "}
-          <Link href="/millie">Millie</Link>. In my free time I enjoy lifting, walking with my dog,
+          <Link href="/millie">Millie</Link>. In my free time I enjoy lifting, walking my dog,
           playing music, and experimenting with new tech.
         </p>
       </div>
