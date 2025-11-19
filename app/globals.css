@@ -48,3 +48,25 @@ body {
 .text-heading {
   @apply text-4xl md:text-5xl font-bold tracking-tight;
 }
+
+.border-dotted-spaced {
+  border-image: repeating-linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-muted-foreground) 50%, transparent) 0,
+    color-mix(in srgb, var(--color-muted-foreground) 50%, transparent) 2px,
+    transparent 2px,
+    transparent 6px
+  ) 1;
+}
+
+.divide-dotted-spaced > * + * {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-image: repeating-linear-gradient(
+    to right,
+    color-mix(in srgb, var(--color-muted-foreground) 50%, transparent) 0,
+    color-mix(in srgb, var(--color-muted-foreground) 50%, transparent) 2px,
+    transparent 2px,
+    transparent 6px
+  ) 1;
+}
