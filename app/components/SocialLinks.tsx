@@ -1,5 +1,8 @@
+"use client";
+
 import { GitHubIcon, LinkedInIcon, TwitterIcon, EmailIcon } from "@/lib/icons";
 import type { ReactNode } from "react";
+import { ScrambleText } from "./ScrambleText";
 
 interface SocialLink {
   name: string;
@@ -43,7 +46,9 @@ export function SocialLinks() {
           aria-label={`Visit ${link.name} profile`}
         >
           <span className="w-5 h-5">{link.icon}</span>
-          <span className="text-sm font-mono uppercase tracking-wider">{link.name}</span>
+          <span className="text-sm font-mono uppercase tracking-wider">
+            <ScrambleText text={link.name} />
+          </span>
         </a>
       ))}
     </nav>

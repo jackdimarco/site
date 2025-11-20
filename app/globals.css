@@ -11,7 +11,7 @@
   --color-accent: #4001FA;
   --color-accent-foreground: #ffffff;
   --color-cyan: #0891b2;
-  --color-red: #dc2626;
+  --color-red: #ff0080;
   --color-violet: #4001FA;
   --color-lime: #CCFD01;
   --color-border: #d4d4d4;
@@ -26,7 +26,7 @@
   --color-accent: #CCFD01;
   --color-accent-foreground: #000000;
   --color-cyan: #01ffff;
-  --color-red: #ff0d1a;
+  --color-red: #ff0080;
   --color-violet: #4001FA;
   --color-lime: #CCFD01;
   --color-border: #29324f;
@@ -46,6 +46,49 @@ body {
 .text-section-heading {
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   @apply text-lg md:text-xl font-bold tracking-widest;
+}
+
+.color-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  padding: 0.25rem 0.5rem;
+  flex-shrink: 0;
+  margin-left: -2.5rem;
+}
+
+.color-block-square {
+  position: relative;
+  background: var(--color-accent);
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  margin-left: -1.75rem;
+}
+
+.color-block-square::before,
+.color-block-square::after {
+  content: "";
+  position: absolute;
+  background: var(--color-accent-foreground);
+}
+
+.color-block-square::before {
+  top: 50%;
+  left: 25%;
+  right: 25%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.color-block-square::after {
+  left: 50%;
+  top: 25%;
+  bottom: 25%;
+  width: 2px;
+  transform: translateX(-50%);
 }
 
 .theme-button {
@@ -91,3 +134,4 @@ a:hover {
     transparent 6px
   );
 }
+

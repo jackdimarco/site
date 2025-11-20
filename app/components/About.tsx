@@ -1,21 +1,24 @@
+"use client";
+
 import { SocialLinks } from "./SocialLinks";
 import { Link } from "./Link";
+import { ScrambleText } from "./ScrambleText";
 
 export function About() {
   return (
     <section className="space-y-6">
       <div className="space-y-4">
         <p className="text-body text-muted-foreground">
-          I'm currently a Senior Software Engineer at{" "}
-          <Link href="https://www.salesforce.com">Salesforce</Link>, building AI automation
-          tools. Before that, I studied Computer Science at the{" "}
-          <Link href="https://www.gatech.edu">Georgia Institute of Technology</Link>, where I
-          graduated with a Bachelor's degree.
+          <ScrambleText text="I'm currently a Senior Software Engineer at " />
+          <Link href="https://www.salesforce.com"><ScrambleText text="Salesforce" /></Link>
+          <ScrambleText text=", building AI automation tools. Before that, I studied Computer Science at the " />
+          <Link href="https://www.gatech.edu"><ScrambleText text="Georgia Institute of Technology" /></Link>
+          <ScrambleText text=", where I graduated with a Bachelor's degree." />
         </p>
         <p className="text-body text-muted-foreground">
-          I currently live in Atlanta, Georgia with my beautiful wife and our dog{" "}
-          <Link href="/millie">Millie</Link>. In my free time I enjoy lifting, walking my dog,
-          playing music, and experimenting with new tech.
+          <ScrambleText text="I currently live in Atlanta, Georgia with my beautiful wife and our dog " />
+          <Link href="/millie"><ScrambleText text="Millie" /></Link>
+          <ScrambleText text=". In my free time I enjoy lifting, walking my dog, playing music, and experimenting with new tech." />
         </p>
       </div>
       <SocialLinks />

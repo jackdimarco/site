@@ -13,7 +13,7 @@ interface BreadcrumbProps {
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav className="flex items-center gap-3 text-lg font-mono h-10">
-      <FolderIcon className="w-6 h-6 text-accent" />
+      <FolderIcon className="w-5 h-5 text-muted-foreground" />
       {items.map((item, index) => (
         <span key={item.label} className="flex items-center gap-3">
           {item.href ? (
