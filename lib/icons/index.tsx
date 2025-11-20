@@ -68,12 +68,8 @@ export function SunIcon(props: IconProps) {
       stroke="currentColor"
       {...props}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-      />
+      <rect x="9" y="9" width="6" height="6" strokeWidth={2} />
+      <path strokeWidth={2} d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
     </svg>
   );
 }
@@ -87,10 +83,9 @@ export function MoonIcon(props: IconProps) {
       {...props}
     >
       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
         strokeWidth={2}
-        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+        strokeLinejoin="miter"
+        d="M20 12A8 8 0 1 1 8 4a6 6 0 0 0 12 8z"
       />
     </svg>
   );
@@ -112,20 +107,3 @@ export function FolderIcon(props: IconProps) {
   );
 }
 
-export function BonfireIcon(props: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <path d="M4 21l16 -4" />
-      <path d="M20 21l-16 -4" />
-      <path d="M12 15a4 4 0 0 0 4 -4c0 -3 -2 -3 -2 -8c-4 2 -6 5 -6 8a4 4 0 0 0 4 4z" />
-    </svg>
-  );
-}

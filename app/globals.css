@@ -3,70 +3,140 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-  --color-background: #faf8f5;
-  --color-foreground: #1a1613;
-  --color-muted: #f0ebe5;
-  --color-muted-foreground: #6b6460;
-  --color-border: #e5dfd7;
-  --color-accent: #d4ccc3;
-  --color-accent-foreground: #1a1613;
+  --color-background: #ffffff;
+  --color-muted: #e5e5e5;
+  --color-foreground: #1a1a1a;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #4001FA;
+  --color-accent-secondary: #ff0080;
+  --color-accent-foreground: #ffffff;
+  --color-border: #d4d4d4;
 }
 
 .dark {
-  --color-background: #1a1613;
-  --color-foreground: #faf8f5;
-  --color-muted: #242220;
-  --color-muted-foreground: #a39d96;
-  --color-border: #353330;
-  --color-accent: #2d2a27;
-  --color-accent-foreground: #faf8f5;
+  --color-background: #1a1a1a;
+  --color-muted: #2e2e2e;
+  --color-foreground: #ffffff;
+  --color-muted-foreground: #6b7d94;
+  --color-accent: #CCFD01;
+  --color-accent-secondary: #1a6fff;
+  --color-accent-foreground: #000000;
+  --color-border: #29324f;
 }
 
 body {
-  font-family: var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   background-color: var(--color-background);
   color: var(--color-foreground);
 }
 
-.theme-button {
-  background-color: var(--color-muted);
-  color: var(--color-muted-foreground);
-}
-
-.theme-button:hover {
-  background-color: var(--color-accent);
-}
-
-.text-muted {
-  color: var(--color-muted-foreground);
-}
-
-.text-body {
-  @apply text-base md:text-lg leading-relaxed;
-}
-
 .text-heading {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   @apply text-4xl md:text-5xl font-bold tracking-tight;
 }
 
-.border-dotted-spaced {
-  border-image: repeating-linear-gradient(
-    to right,
-    color-mix(in srgb, var(--color-muted-foreground) 50%, transparent) 0,
-    color-mix(in srgb, var(--color-muted-foreground) 50%, transparent) 2px,
-    transparent 2px,
-    transparent 6px
-  ) 1;
+.text-section-heading {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  @apply text-lg md:text-xl font-bold tracking-widest;
 }
 
-.divide-dotted-spaced > * + * {
-  border-top-width: 1px;
-  border-top-style: solid;
-  border-image: repeating-linear-gradient(
-    to right,
-    color-mix(in srgb, var(--color-muted-foreground) 50%, transparent) 0,
-    color-mix(in srgb, var(--color-muted-foreground) 50%, transparent) 2px,
+.color-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  padding: 0.25rem 0.5rem;
+  flex-shrink: 0;
+  margin-left: -2.5rem;
+  font-weight: 700;
+}
+
+.color-block-square {
+  position: relative;
+  background: var(--color-accent);
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  margin-left: -1.75rem;
+}
+
+.color-block-square::before,
+.color-block-square::after {
+  content: "";
+  position: absolute;
+  background: var(--color-accent-foreground);
+}
+
+.color-block-square::before {
+  top: 50%;
+  left: 25%;
+  right: 25%;
+  height: 2px;
+  transform: translateY(-50%);
+}
+
+.color-block-square::after {
+  left: 50%;
+  top: 25%;
+  bottom: 25%;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+.theme-button {
+  background-color: transparent;
+  color: var(--color-foreground);
+  border: 2px solid var(--color-border);
+  transition: all 0.15s ease;
+}
+
+.theme-button:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-accent-secondary);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.border-cyber {
+  border: none;
+  height: 2px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #666666 0,
+    #666666 1px,
+    transparent 1px,
+    transparent 6px
+  );
+}
+
+.border-cyber-secondary {
+  border: none;
+  height: 2px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--color-accent-secondary) 0,
+    var(--color-accent-secondary) 2px,
     transparent 2px,
     transparent 6px
-  ) 1;
+  );
 }
+

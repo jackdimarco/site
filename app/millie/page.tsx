@@ -47,22 +47,28 @@ export default function MilliePage() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
         {PHOTO_FILENAMES.map((filename, index) => (
           <button
             key={filename}
             onClick={() => setSelectedImage(filename)}
-            className="aspect-square rounded-sm overflow-hidden bg-muted cursor-pointer"
+            className="relative aspect-square cursor-pointer group"
             aria-label={`View Millie photo ${index + 1}`}
           >
-            <Image
-              src={`/millie/${filename}`}
-              alt={`Millie photo ${index + 1}`}
-              width={500}
-              height={500}
-              className="w-full h-full object-cover"
-              loading="lazy"
+            <div
+              className="absolute inset-0 -translate-x-0.5 -translate-y-0.5"
+              style={{ backgroundColor: "var(--color-accent)" }}
             />
+            <div className="relative w-full h-full overflow-hidden bg-muted border border-border group-hover:border-accent transition-colors">
+              <Image
+                src={`/millie/${filename}`}
+                alt={`Millie photo ${index + 1}`}
+                width={500}
+                height={500}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
           </button>
         ))}
       </div>
@@ -71,18 +77,18 @@ export default function MilliePage() {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed top-0 left-0 w-screen h-screen bg-black z-50 flex items-center justify-center"
           onClick={() => setSelectedImage(null)}
         >
           <button
             onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 text-white hover:opacity-70 transition-opacity"
+            className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-white text-black hover:bg-accent transition-colors"
             aria-label="Close"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -94,12 +100,13 @@ export default function MilliePage() {
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
+
           <Image
             src={`/millie/${selectedImage}`}
             alt="Millie photo enlarged"
             width={1200}
             height={1200}
-            className="max-w-full max-h-[90vh] object-contain"
+            className="w-auto h-auto max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)] object-contain"
             onClick={(e) => e.stopPropagation()}
           />
         </div>

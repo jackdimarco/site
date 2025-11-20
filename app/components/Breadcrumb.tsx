@@ -12,14 +12,14 @@ interface BreadcrumbProps {
 
 export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <nav className="flex items-center gap-2 text-body text-muted">
-      <FolderIcon className="w-4 h-4" />
+    <nav className="flex items-center gap-3 text-lg font-mono h-10">
+      <FolderIcon className="w-5 h-5 text-muted-foreground" />
       {items.map((item, index) => (
-        <span key={item.label} className="flex items-center gap-2">
+        <span key={item.label} className="flex items-center gap-3">
           {item.href ? (
             <NextLink
               href={item.href}
-              className="hover:text-foreground transition-colors underline"
+              className="text-muted-foreground hover:text-accent transition-colors"
             >
               {item.label}
             </NextLink>
@@ -28,7 +28,9 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
               {item.label}
             </span>
           )}
-          {index < items.length - 1 && <span>/</span>}
+          {index < items.length - 1 && (
+            <span className="text-border">/</span>
+          )}
         </span>
       ))}
     </nav>
