@@ -17,7 +17,6 @@ let hasAnimatedOnce = false;
 interface CharState {
   sequence: string[];
   timings: number[];
-  currentIndex: number;
 }
 
 export function ScrambleText({
@@ -42,14 +41,13 @@ export function ScrambleText({
 
     // Skip animation if already played this session
     if (hasAnimatedOnce) {
-      setDisplayText(finalText);
       return;
     }
 
     // Generate unique random sequence for each character
     charStatesRef.current = finalText.split("").map((char) => {
       if (char === " " || /[.,!?;:'"()-]/.test(char)) {
-        return { sequence: [char], timings: [0], currentIndex: 0 };
+        return { sequence: [char], timings: [0] };
       }
 
       // Random number of changes (2-4) before resolving
@@ -75,7 +73,7 @@ export function ScrambleText({
       sequence.push(char);
       scaledTimings.push(resolveTime);
 
-      return { sequence, timings: scaledTimings, currentIndex: 0 };
+      return { sequence, timings: scaledTimings };
     });
 
     const startTimeout = setTimeout(() => {
@@ -113,5 +111,5 @@ export function ScrambleText({
     return () => clearTimeout(startTimeout);
   }, [text, delay, duration, mounted]);
 
-  return <span className={className}>{displayText}</span>;
+  return <span className={className} suppressHydrationWarning>{displayText}</span>;
 }

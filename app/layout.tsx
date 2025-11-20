@@ -19,18 +19,6 @@ const chakraPetch = Chakra_Petch({
 
 export const metadata: Metadata = {
   title: "Jack DiMarco",
-  description: "Jack DiMarco's personal website",
-  openGraph: {
-    title: "Jack DiMarco",
-    description: "Jack DiMarco's personal website",
-    type: "website",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary",
-    title: "Jack DiMarco",
-    description: "Jack DiMarco's personal website",
-  },
 };
 
 export default function RootLayout({
@@ -42,6 +30,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${jetbrainsMono.variable} ${chakraPetch.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <div className="min-h-screen flex justify-center px-6">

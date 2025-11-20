@@ -11,11 +11,14 @@ export function Experience() {
       <h2 className="text-section-heading flex items-center gap-2">
         <span className="color-block-square"></span>
         <ScrambleText text="EXPERIENCE" />
+        <span className="text-xs font-mono text-muted-foreground ml-auto">
+          <ScrambleText text="[01]" />
+        </span>
       </h2>
 
       <div>
-        <div className="border-cyber" />
-        {JOBS.map((job, index) => (
+        <div className="border-cyber-secondary" />
+        {JOBS.map((job) => (
           <div key={`${job.company}-${job.period}`}>
             <div className="flex items-center justify-between gap-3 py-2">
               <div className="flex items-center gap-3 min-w-0">
@@ -56,7 +59,7 @@ export function Experience() {
                 <ScrambleText text={job.period} />
               </span>
             </div>
-            <div className="border-cyber" />
+            <div className="border-cyber-secondary" />
           </div>
         ))}
       </div>

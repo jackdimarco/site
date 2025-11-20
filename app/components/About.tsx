@@ -16,9 +16,9 @@ export function About() {
           <ScrambleText text=", where I graduated with a Bachelor's degree." />
         </p>
         <p className="text-body text-muted-foreground">
-          <ScrambleText text="I currently live in Atlanta, Georgia with my beautiful wife and our dog " />
+          <ScrambleText text="I live in Atlanta, Georgia with my beautiful wife and our dog " />
           <Link href="/millie"><ScrambleText text="Millie" /></Link>
-          <ScrambleText text=". In my free time I enjoy lifting, walking my dog, playing music, and experimenting with new tech." />
+          <ScrambleText text=". In my free time I enjoy lifting, walking my dog, playing guitar, and experimenting with new tech." />
         </p>
       </div>
       <SocialLinks />
