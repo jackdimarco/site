@@ -43,7 +43,7 @@ export function SocialLinks() {
           aria-label={`Visit ${link.name} profile`}
         >
           <span className="w-5 h-5">{link.icon}</span>
-          <span className="text-base">{link.name}</span>
+          <span className="text-sm font-mono uppercase tracking-wider">{link.name}</span>
         </a>
       ))}
     </nav>
