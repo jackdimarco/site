@@ -5,12 +5,15 @@ import Image from "next/image";
 import { Link } from "./Link";
 import { JOBS } from "@/lib/data";
 import { ScrambleText } from "./ScrambleText";
+import { AsteriskIcon } from "@/lib/icons";
 
 export const Experience = memo(function Experience() {
   return (
-    <section className="space-y-6">
+    <section className="space-y-4">
       <h2 className="text-section-heading flex items-center gap-2">
-        <span className="color-block-square"></span>
+        <span className="color-block-square">
+          <AsteriskIcon className="w-4 h-4" />
+        </span>
         <ScrambleText text="EXPERIENCE" />
         <span className="text-xs font-mono text-muted-foreground ml-auto">
           <ScrambleText text="[01]" />
@@ -21,15 +24,15 @@ export const Experience = memo(function Experience() {
         <div className="border-cyber-secondary" />
         {JOBS.map((job) => (
           <div key={`${job.company}-${job.period}`}>
-            <div className="py-2">
-              <div className="flex items-center gap-3">
-                <div className="flex-shrink-0 w-10 h-10 bg-muted flex items-center justify-center overflow-hidden">
+            <div className="py-1">
+              <div className="flex items-center gap-2.5">
+                <div className="flex-shrink-0 w-8 h-8 bg-muted flex items-center justify-center overflow-hidden">
                   {job.logo ? (
                     <Image
                       src={job.logo}
                       alt={`${job.company} logo`}
-                      width={32}
-                      height={32}
+                      width={24}
+                      height={24}
                       className="object-contain"
                       loading="lazy"
                     />

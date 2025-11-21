@@ -35,7 +35,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="min-h-screen flex justify-center px-6">
             <div className="w-full max-w-2xl">
-              <div className="flex flex-col min-h-screen pt-10 pb-8 space-y-12 md:space-y-16">
+              <div className="flex flex-col min-h-screen pt-10 pb-8 space-y-10 md:space-y-12">
                 <Header />
                 {children}
                 <Footer />

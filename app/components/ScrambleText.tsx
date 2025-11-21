@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useLayoutEffect, useRef, memo } from "react";
 
 interface ScrambleTextProps {
   text: string;
@@ -11,13 +11,8 @@ interface ScrambleTextProps {
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
 
-// Module-level flag - persists across navigations, resets on refresh
+// Tracks if animation has played in this session (resets on page reload)
 let hasAnimatedOnce = false;
-
-interface CharState {
-  sequence: string[];
-  timings: number[];
-}
 
 function generateScrambled(text: string): string {
   return text.split("").map((char) => {
@@ -28,110 +23,97 @@ function generateScrambled(text: string): string {
   }).join("");
 }
 
+function getRandomChar(): string {
+  return CHARS[Math.floor(Math.random() * CHARS.length)];
+}
+
+function shouldSkipChar(char: string): boolean {
+  return char === " " || /[.,!?;:'"()-]/.test(char);
+}
+
 export const ScrambleText = memo(function ScrambleText({
   text,
   delay = 0,
-  duration = 1400,
+  duration = 1000,
   className = ""
 }: ScrambleTextProps) {
-  const initialScrambledRef = useRef<string>(hasAnimatedOnce ? text : generateScrambled(text));
-  const [displayText, setDisplayText] = useState(text);
-  const [isClient, setIsClient] = useState(false);
-  const charStatesRef = useRef<CharState[]>([]);
+  const initialScrambled = useRef(hasAnimatedOnce ? text : generateScrambled(text));
+  const [displayText, setDisplayText] = useState(() => hasAnimatedOnce ? text : initialScrambled.current);
 
-  // Set scrambled text on client mount (only if animation hasn't played yet)
-  useEffect(() => {
-    if (!hasAnimatedOnce) {
-      setDisplayText(initialScrambledRef.current);
-    }
-    setIsClient(true);
-  }, []);
+  // Store resolve time and change frequency for each character
+  const resolveTimesRef = useRef<number[]>([]);
+  const changeIntervalsRef = useRef<number[]>([]);
+  const lastChangeTimesRef = useRef<number[]>([]);
 
-  useEffect(() => {
-    if (!isClient) return;
-
-    const finalText = text;
-
+  useLayoutEffect(() => {
     // Skip animation if already played this session
     if (hasAnimatedOnce) {
       return;
     }
 
-    // Generate unique random sequence for each character, starting from initial scrambled state
-    const initialScrambled = initialScrambledRef.current!;
-    charStatesRef.current = finalText.split("").map((char, index) => {
-      const initialChar = initialScrambled[index];
+    // Calculate when each character should resolve and how often it changes
+    resolveTimesRef.current = text.split("").map(() =>
+      Math.random() * duration * 0.7 + duration * 0.3 // Resolve between 30-100% of duration
+    );
 
-      if (char === " " || /[.,!?;:'"()-]/.test(char)) {
-        return { sequence: [char], timings: [0] };
-      }
+    // Each character changes at its own random frequency (60-120ms)
+    changeIntervalsRef.current = text.split("").map(() =>
+      Math.random() * 60 + 60
+    );
 
-      // Start with the initial scrambled character, add 0-1 more changes, then resolve
-      const numChanges = Math.floor(Math.random() * 2); // 0 or 1 additional changes
-      const sequence: string[] = [initialChar]; // Start with initial scrambled char
-      const timings: number[] = [0];
+    lastChangeTimesRef.current = new Array(text.length).fill(0);
 
-      let totalTime = 0;
-      for (let i = 0; i < numChanges; i++) {
-        const changeTime = Math.floor(Math.random() * 100) + 50;
-        totalTime += changeTime;
-        sequence.push(CHARS[Math.floor(Math.random() * CHARS.length)]);
-        timings.push(totalTime);
-      }
-
-      // Scale timings to fit within duration, with random end time
-      const resolveTime = (Math.random() * 0.6 + 0.3) * duration;
-      if (totalTime > 0) {
-        const scale = resolveTime / totalTime;
-        for (let i = 1; i < timings.length; i++) {
-          timings[i] = timings[i] * scale;
-        }
-      }
-
-      // Add final character
-      sequence.push(char);
-      timings.push(resolveTime);
-
-      return { sequence, timings };
-    });
-
-    const startTimeout = setTimeout(() => {
+    const startAnimation = () => {
       const startTime = Date.now();
+      let currentText = initialScrambled.current.split("");
 
       const interval = setInterval(() => {
         const elapsed = Date.now() - startTime;
-        let allDone = true;
+        let allResolved = true;
 
-        const newText = charStatesRef.current.map((state) => {
-          // Find current character based on elapsed time
-          // Find the last timing that has been reached
-          let charIndex = 0;
-          for (let i = state.timings.length - 1; i >= 0; i--) {
-            if (elapsed >= state.timings[i]) {
-              charIndex = i;
-              if (i < state.timings.length - 1) {
-                allDone = false;
-              }
-              break;
-            }
+        // Update each character
+        const newText = text.split("").map((finalChar, i) => {
+          if (shouldSkipChar(finalChar)) {
+            return finalChar;
           }
-          return state.sequence[charIndex];
+
+          // Check if this character should resolve
+          if (elapsed >= resolveTimesRef.current[i]) {
+            return finalChar;
+          }
+
+          // Not resolved yet
+          allResolved = false;
+
+          // Only change if enough time has passed since last change
+          if (elapsed - lastChangeTimesRef.current[i] >= changeIntervalsRef.current[i]) {
+            currentText[i] = getRandomChar();
+            lastChangeTimesRef.current[i] = elapsed;
+          }
+
+          return currentText[i];
         }).join("");
 
         setDisplayText(newText);
 
-        if (allDone || elapsed >= duration) {
+        if (allResolved || elapsed >= duration) {
           clearInterval(interval);
-          setDisplayText(finalText);
+          setDisplayText(text);
           hasAnimatedOnce = true;
         }
-      }, 30);
+      }, 30); // Check every 30ms for smooth updates
 
+      return interval;
+    };
+
+    if (delay === 0) {
+      const interval = startAnimation();
       return () => clearInterval(interval);
-    }, delay);
-
-    return () => clearTimeout(startTimeout);
-  }, [text, delay, duration, isClient]);
+    } else {
+      const timeout = setTimeout(() => startAnimation(), delay);
+      return () => clearTimeout(timeout);
+    }
+  }, [text, delay, duration]);
 
   return <span className={className} suppressHydrationWarning>{displayText}</span>;
 });

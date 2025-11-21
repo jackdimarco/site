@@ -33,12 +33,16 @@ body {
 
 .text-heading {
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  @apply text-4xl md:text-5xl font-bold tracking-tight;
+  @apply text-4xl font-bold tracking-tight;
 }
 
 .text-section-heading {
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  @apply text-lg md:text-xl font-bold tracking-widest;
+  @apply text-lg font-bold tracking-widest;
+}
+
+.text-body {
+  @apply text-base;
 }
 
 .color-block {
@@ -54,35 +58,15 @@ body {
 }
 
 .color-block-square {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--color-accent);
+  color: var(--color-accent-foreground);
   width: 1.5rem;
   height: 1.5rem;
   flex-shrink: 0;
   margin-left: 0;
-}
-
-.color-block-square::before,
-.color-block-square::after {
-  content: "";
-  position: absolute;
-  background: var(--color-accent-foreground);
-}
-
-.color-block-square::before {
-  top: 50%;
-  left: 25%;
-  right: 25%;
-  height: 2px;
-  transform: translateY(-50%);
-}
-
-.color-block-square::after {
-  left: 50%;
-  top: 25%;
-  bottom: 25%;
-  width: 2px;
-  transform: translateX(-50%);
 }
 
 .theme-button {
@@ -102,7 +86,6 @@ body {
 a {
   color: var(--color-accent);
   text-decoration: none;
-  transition: color 0.15s ease;
 }
 
 a:hover {
