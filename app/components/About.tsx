@@ -12,7 +12,7 @@ export const About = memo(function About() {
         <p className="text-body text-muted-foreground">
           <ScrambleText text="I'm currently a Senior Software Engineer at " />
           <Link href="https://www.salesforce.com"><ScrambleText text="Salesforce" /></Link>
-          <ScrambleText text=", building AI automation tools. Before that, I studied Computer Science at the " />
+          <ScrambleText text=" building AI automation tools for Commerce. Before that, I studied Computer Science at the " />
           <Link href="https://www.gatech.edu"><ScrambleText text="Georgia Institute of Technology" /></Link>
           <ScrambleText text=", where I graduated with a Bachelor's degree." />
         </p>

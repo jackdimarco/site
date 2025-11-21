@@ -26,6 +26,37 @@ const PHOTO_FILENAMES = [
 
 export default function MilliePage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd || !selectedImage) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    const currentIndex = PHOTO_FILENAMES.indexOf(selectedImage);
+
+    if (isLeftSwipe && currentIndex < PHOTO_FILENAMES.length - 1) {
+      setSelectedImage(PHOTO_FILENAMES[currentIndex + 1]);
+    }
+    if (isRightSwipe && currentIndex > 0) {
+      setSelectedImage(PHOTO_FILENAMES[currentIndex - 1]);
+    }
+  };
 
   useEffect(() => {
     if (!selectedImage) {
@@ -97,12 +128,15 @@ export default function MilliePage() {
           <div
             role="dialog"
             aria-modal="true"
-            className="fixed top-0 left-0 w-screen h-screen bg-black z-50 flex items-center justify-center"
+            className="fixed top-0 left-0 w-screen h-screen bg-black z-50 flex items-center justify-center touch-none"
             onClick={() => setSelectedImage(null)}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-white text-black hover:bg-accent transition-colors"
+              className="absolute top-4 right-4 z-10 w-12 h-12 md:w-10 md:h-10 flex items-center justify-center bg-white text-black hover:bg-accent active:bg-accent transition-colors"
               aria-label="Close"
             >
               <svg
@@ -121,13 +155,14 @@ export default function MilliePage() {
               </svg>
             </button>
 
+            {/* Navigation buttons - hidden on mobile, shown on desktop */}
             {prevImage && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   setSelectedImage(prevImage);
                 }}
-                className="absolute left-4 z-10 w-12 h-12 flex items-center justify-center bg-white text-black hover:bg-accent transition-colors"
+                className="hidden md:flex absolute left-4 z-10 w-12 h-12 items-center justify-center bg-white text-black hover:bg-accent transition-colors"
                 aria-label="Previous photo"
               >
                 <svg
@@ -152,7 +187,7 @@ export default function MilliePage() {
                   e.stopPropagation();
                   setSelectedImage(nextImage);
                 }}
-                className="absolute right-4 z-10 w-12 h-12 flex items-center justify-center bg-white text-black hover:bg-accent transition-colors"
+                className="hidden md:flex absolute right-4 z-10 w-12 h-12 items-center justify-center bg-white text-black hover:bg-accent transition-colors"
                 aria-label="Next photo"
               >
                 <svg
@@ -176,7 +211,7 @@ export default function MilliePage() {
               alt="Millie photo enlarged"
               width={1200}
               height={1200}
-              className="w-auto h-auto max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)] object-contain"
+              className="w-auto h-auto max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)] object-contain pointer-events-none"
               onClick={(e) => e.stopPropagation()}
               priority
             />

@@ -19,7 +19,7 @@ export const Footer = memo(function Footer() {
             <GitHubIcon className="w-5 h-5" />
           </a>
           <div className="space-y-1">
-            <p className="text-xs text-muted-foreground font-mono">
+            <p className="text-sm text-muted-foreground font-mono">
               <span className="text-accent">//</span> <ScrambleText text="SYS v0.1" />
             </p>
             <p className="text-sm text-muted-foreground font-mono">
