@@ -3,8 +3,8 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-  --color-background: #f0f0f0;
-  --color-muted: #e5e5e5;
+  --color-background: #fafaf8;
+  --color-muted: #eeede9;
   --color-foreground: #1a1a1a;
   --color-muted-foreground: #6b7280;
   --color-accent: #4001FA;

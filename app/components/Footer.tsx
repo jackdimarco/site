@@ -7,8 +7,16 @@ import { GitHubIcon } from "@/lib/icons";
 export const Footer = memo(function Footer() {
   return (
     <footer className="mt-auto pt-8">
-      <div className="border-t border-border/30 pt-6 opacity-50">
-        <div className="flex items-start gap-3">
+      <div className="border-t border-border/30 pt-4 opacity-50">
+        <div className="flex items-start justify-between gap-3">
+          <div className="space-y-1">
+            <p className="text-sm text-muted-foreground font-mono">
+              <span className="text-accent">//</span> <ScrambleText text="SYS v0.1" />
+            </p>
+            <p className="text-sm text-muted-foreground font-mono">
+              <span className="text-accent">//</span> <ScrambleText text="Be safe, friend." />
+            </p>
+          </div>
           <a
             href="https://github.com/jackdimarco/site"
             target="_blank"
@@ -18,14 +26,6 @@ export const Footer = memo(function Footer() {
           >
             <GitHubIcon className="w-5 h-5" />
           </a>
-          <div className="space-y-1">
-            <p className="text-sm text-muted-foreground font-mono">
-              <span className="text-accent">//</span> <ScrambleText text="SYS v0.1" />
-            </p>
-            <p className="text-sm text-muted-foreground font-mono">
-              <span className="text-accent">//</span> <ScrambleText text="Be safe, friend. Don't you dare go hollow." />
-            </p>
-          </div>
         </div>
       </div>
     </footer>

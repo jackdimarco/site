@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { CloseIcon, ChevronLeftIcon, ChevronRightIcon } from "@/lib/icons";
 
 const PHOTO_FILENAMES = [
   "millie1.jpeg",
@@ -32,16 +33,16 @@ export default function MilliePage() {
   // Minimum swipe distance (in px)
   const minSwipeDistance = 50;
 
-  const onTouchStart = (e: React.TouchEvent) => {
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const onTouchMove = (e: React.TouchEvent) => {
+  const onTouchMove = useCallback((e: React.TouchEvent) => {
     setTouchEnd(e.targetTouches[0].clientX);
-  };
+  }, []);
 
-  const onTouchEnd = () => {
+  const onTouchEnd = useCallback(() => {
     if (!touchStart || !touchEnd || !selectedImage) return;
 
     const distance = touchStart - touchEnd;
@@ -56,7 +57,7 @@ export default function MilliePage() {
     if (isRightSwipe && currentIndex > 0) {
       setSelectedImage(PHOTO_FILENAMES[currentIndex - 1]);
     }
-  };
+  }, [touchStart, touchEnd, selectedImage]);
 
   useEffect(() => {
     if (!selectedImage) {
@@ -139,20 +140,7 @@ export default function MilliePage() {
               className="absolute top-4 right-4 z-10 w-12 h-12 md:w-10 md:h-10 flex items-center justify-center bg-white text-black hover:bg-accent active:bg-accent transition-colors"
               aria-label="Close"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+              <CloseIcon className="w-6 h-6" />
             </button>
 
             {/* Navigation buttons - hidden on mobile, shown on desktop */}
@@ -165,19 +153,7 @@ export default function MilliePage() {
                 className="hidden md:flex absolute left-4 z-10 w-12 h-12 items-center justify-center bg-white text-black hover:bg-accent transition-colors"
                 aria-label="Previous photo"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
+                <ChevronLeftIcon className="w-6 h-6" />
               </button>
             )}
 
@@ -190,19 +166,7 @@ export default function MilliePage() {
                 className="hidden md:flex absolute right-4 z-10 w-12 h-12 items-center justify-center bg-white text-black hover:bg-accent transition-colors"
                 aria-label="Next photo"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
+                <ChevronRightIcon className="w-6 h-6" />
               </button>
             )}
 

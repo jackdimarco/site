@@ -3,25 +3,17 @@
 import { memo } from "react";
 import Image from "next/image";
 import { Link } from "./Link";
-import { JOBS } from "@/lib/data";
 import { ScrambleText } from "./ScrambleText";
-import { AsteriskIcon } from "@/lib/icons";
+import { SectionHeader } from "./SectionHeader";
+import { JOBS } from "@/lib/data";
 
 export const Experience = memo(function Experience() {
   return (
     <section className="space-y-4">
-      <h2 className="text-section-heading flex items-center gap-2">
-        <span className="color-block-square">
-          <AsteriskIcon className="w-4 h-4" />
-        </span>
-        <ScrambleText text="EXPERIENCE" />
-        <span className="text-xs font-mono text-muted-foreground ml-auto">
-          <ScrambleText text="[01]" />
-        </span>
-      </h2>
+      <SectionHeader title="EXPERIENCE" number="01" />
 
       <div>
-        <div className="border-cyber-secondary" />
+        <div className="border-cyber" />
         {JOBS.map((job) => (
           <div key={`${job.company}-${job.period}`}>
             <div className="py-1">
@@ -64,7 +56,7 @@ export const Experience = memo(function Experience() {
                 </div>
               </div>
             </div>
-            <div className="border-cyber-secondary" />
+            <div className="border-cyber" />
           </div>
         ))}
       </div>

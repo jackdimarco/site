@@ -1,9 +1,9 @@
 "use client";
 
 import { memo } from "react";
-import { SocialLinks } from "./SocialLinks";
 import { Link } from "./Link";
 import { ScrambleText } from "./ScrambleText";
+import { SocialLinks } from "./SocialLinks";
 
 export const About = memo(function About() {
   return (

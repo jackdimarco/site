@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { Breadcrumb, type BreadcrumbItem } from "./Breadcrumb";
 import { ThemeToggle } from "./ThemeToggle";
@@ -21,10 +22,11 @@ function buildBreadcrumbItems(pathname: string): BreadcrumbItem[] {
 
 export function Header() {
   const pathname = usePathname();
+  const breadcrumbItems = useMemo(() => buildBreadcrumbItems(pathname), [pathname]);
 
   return (
     <header className="flex items-center justify-between gap-8 w-full">
-      <Breadcrumb items={buildBreadcrumbItems(pathname)} />
+      <Breadcrumb items={breadcrumbItems} />
       <ThemeToggle />
     </header>
   );
