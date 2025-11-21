@@ -21,8 +21,8 @@ export const Experience = memo(function Experience() {
         <div className="border-cyber-secondary" />
         {JOBS.map((job) => (
           <div key={`${job.company}-${job.period}`}>
-            <div className="flex items-center justify-between gap-3 py-2">
-              <div className="flex items-center gap-3 min-w-0">
+            <div className="py-2">
+              <div className="flex items-center gap-3">
                 <div className="flex-shrink-0 w-10 h-10 bg-muted flex items-center justify-center overflow-hidden">
                   {job.logo ? (
                     <Image
@@ -38,27 +38,28 @@ export const Experience = memo(function Experience() {
                   )}
                 </div>
 
-                <div className="min-w-0">
-                  <div className="flex items-baseline gap-2 flex-wrap">
-                    {job.companyUrl ? (
-                      <Link href={job.companyUrl} className="font-bold">
-                        <ScrambleText text={job.company} />
-                      </Link>
-                    ) : (
-                      <span className="font-bold">
-                        <ScrambleText text={job.company} />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 md:gap-2">
+                    <div className="flex items-baseline gap-2 flex-wrap">
+                      {job.companyUrl ? (
+                        <Link href={job.companyUrl} className="font-bold text-sm md:text-base">
+                          <ScrambleText text={job.company} />
+                        </Link>
+                      ) : (
+                        <span className="font-bold text-sm md:text-base">
+                          <ScrambleText text={job.company} />
+                        </span>
+                      )}
+                      <span className="text-muted-foreground text-xs md:text-sm">
+                        <ScrambleText text={job.role} />
                       </span>
-                    )}
-                    <span className="text-muted-foreground text-sm">
-                      <ScrambleText text={job.role} />
+                    </div>
+                    <span className="text-xs md:text-sm font-mono text-muted-foreground whitespace-nowrap md:ml-auto">
+                      <ScrambleText text={job.period} />
                     </span>
                   </div>
                 </div>
               </div>
-
-              <span className="text-sm font-mono text-muted-foreground whitespace-nowrap">
-                <ScrambleText text={job.period} />
-              </span>
             </div>
             <div className="border-cyber-secondary" />
           </div>

@@ -12,7 +12,7 @@ export const JOBS: Job[] = [
     companyUrl: "https://www.salesforce.com",
     logo: "/logos/salesforce_logo.jpg",
     role: "Software Engineer",
-    period: "2022 - Present",
+    period: "2022-Present",
   },
   {
     company: "Canary",
