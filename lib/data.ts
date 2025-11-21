@@ -26,7 +26,14 @@ export const JOBS: Job[] = [
     companyUrl: "https://www.adp.com",
     logo: "/logos/adp_logo.jpg",
     role: "Software Engineer Intern",
-    period: "2020",
+    period: "2021",
+  },
+  {
+    company: "Bits of Good",
+    companyUrl: "https://www.bitsofgood.org/",
+    logo: "/logos/gtbitsofgood_logo.jpeg",
+    role: "Software Engineer",
+    period: "2020-21",
   },
   {
     company: "Idenhaus",

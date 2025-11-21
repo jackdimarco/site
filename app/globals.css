@@ -3,7 +3,7 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-  --color-background: #ffffff;
+  --color-background: #f0f0f0;
   --color-muted: #e5e5e5;
   --color-foreground: #1a1a1a;
   --color-muted-foreground: #6b7280;
@@ -14,7 +14,7 @@
 }
 
 .dark {
-  --color-background: #1a1a1a;
+  --color-background: #1e1e1e;
   --color-muted: #2e2e2e;
   --color-foreground: #ffffff;
   --color-muted-foreground: #6b7d94;
@@ -28,6 +28,7 @@ body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   background-color: var(--color-background);
   color: var(--color-foreground);
+  font-weight: 600;
 }
 
 .text-heading {

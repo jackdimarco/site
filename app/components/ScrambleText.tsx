@@ -22,7 +22,7 @@ interface CharState {
 export function ScrambleText({
   text,
   delay = 200,
-  duration = 800,
+  duration = 1400,
   className = ""
 }: ScrambleTextProps) {
   const [displayText, setDisplayText] = useState(text);
@@ -50,8 +50,8 @@ export function ScrambleText({
         return { sequence: [char], timings: [0] };
       }
 
-      // Random number of changes (2-4) before resolving
-      const numChanges = Math.floor(Math.random() * 3) + 2;
+      // Random number of changes (1-2) before resolving
+      const numChanges = Math.floor(Math.random() * 2) + 1;
       const sequence: string[] = [];
       const timings: number[] = [];
 
