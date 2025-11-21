@@ -1,8 +1,9 @@
 "use client";
 
+import { memo } from "react";
 import { ScrambleText } from "./ScrambleText";
 
-export function Projects() {
+export const Projects = memo(function Projects() {
   return (
     <section className="space-y-6">
       <h2 className="text-section-heading flex items-center gap-2">
@@ -17,4 +18,4 @@ export function Projects() {
       </p>
     </section>
   );
-}
+});

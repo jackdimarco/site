@@ -1,11 +1,12 @@
 "use client";
 
+import { memo } from "react";
 import Image from "next/image";
 import { Link } from "./Link";
 import { JOBS } from "@/lib/data";
 import { ScrambleText } from "./ScrambleText";
 
-export function Experience() {
+export const Experience = memo(function Experience() {
   return (
     <section className="space-y-6">
       <h2 className="text-section-heading flex items-center gap-2">
@@ -65,4 +66,4 @@ export function Experience() {
       </div>
     </section>
   );
-}
+});

@@ -49,7 +49,7 @@ body {
   color: var(--color-accent-foreground);
   padding: 0.25rem 0.5rem;
   flex-shrink: 0;
-  margin-left: -2.5rem;
+  margin-left: 0;
   font-weight: 700;
 }
 
@@ -59,7 +59,7 @@ body {
   width: 1.5rem;
   height: 1.5rem;
   flex-shrink: 0;
-  margin-left: -1.75rem;
+  margin-left: 0;
 }
 
 .color-block-square::before,
@@ -88,13 +88,15 @@ body {
 .theme-button {
   background-color: transparent;
   color: var(--color-foreground);
-  border: 2px solid var(--color-border);
+  border: 2px solid var(--color-foreground);
+  opacity: 0.5;
   transition: all 0.15s ease;
 }
 
 .theme-button:hover {
   color: var(--color-accent);
   border-color: var(--color-accent);
+  opacity: 1;
 }
 
 a {

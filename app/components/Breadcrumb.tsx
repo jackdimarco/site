@@ -1,3 +1,4 @@
+import { memo } from "react";
 import NextLink from "next/link";
 import { FolderIcon } from "@/lib/icons";
 
@@ -10,7 +11,7 @@ interface BreadcrumbProps {
   items: BreadcrumbItem[];
 }
 
-export function Breadcrumb({ items }: BreadcrumbProps) {
+export const Breadcrumb = memo(function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav className="flex items-center gap-3 text-lg font-mono h-10">
       <FolderIcon className="w-5 h-5 text-muted-foreground" />
@@ -35,4 +36,4 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
       ))}
     </nav>
   );
-}
+});

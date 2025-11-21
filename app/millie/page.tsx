@@ -28,7 +28,13 @@ export default function MilliePage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!selectedImage) return;
+    if (!selectedImage) {
+      // Blur the focused element when modal closes
+      if (document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+      }
+      return;
+    }
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {

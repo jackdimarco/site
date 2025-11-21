@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { GitHubIcon, LinkedInIcon, TwitterIcon, EmailIcon } from "@/lib/icons";
 import type { ReactNode } from "react";
 import { ScrambleText } from "./ScrambleText";
@@ -33,7 +34,7 @@ const SOCIAL_LINKS: SocialLink[] = [
   },
 ];
 
-export function SocialLinks() {
+export const SocialLinks = memo(function SocialLinks() {
   return (
     <nav className="flex flex-wrap gap-4 items-center" aria-label="Social media links">
       {SOCIAL_LINKS.map((link) => (
@@ -53,4 +54,4 @@ export function SocialLinks() {
       ))}
     </nav>
   );
-}
+});

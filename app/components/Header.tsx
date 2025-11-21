@@ -23,7 +23,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full max-w-2xl flex items-center justify-between gap-8">
+    <header className="flex items-center justify-between gap-8 w-full">
       <Breadcrumb items={buildBreadcrumbItems(pathname)} />
       <ThemeToggle />
     </header>

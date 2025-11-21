@@ -1,9 +1,10 @@
 "use client";
 
+import { memo } from "react";
 import Image from "next/image";
 import { ScrambleText } from "./ScrambleText";
 
-export function Hero() {
+export const Hero = memo(function Hero() {
   return (
     <h1 className="text-heading flex items-center gap-3">
       <span className="color-block !p-0.5 aspect-square">
@@ -18,4 +19,4 @@ export function Hero() {
       <ScrambleText text="JACK DIMARCO" />
     </h1>
   );
-}
+});

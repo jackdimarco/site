@@ -1,10 +1,11 @@
 "use client";
 
+import { memo } from "react";
 import { SocialLinks } from "./SocialLinks";
 import { Link } from "./Link";
 import { ScrambleText } from "./ScrambleText";
 
-export function About() {
+export const About = memo(function About() {
   return (
     <section className="space-y-6">
       <div className="space-y-4">
@@ -24,4 +25,4 @@ export function About() {
       <SocialLinks />
     </section>
   );
-}
+});
