@@ -104,7 +104,7 @@ export default function MilliePage() {
             aria-label={`View Millie photo ${index + 1}`}
           >
             <div
-              className="absolute inset-0 -translate-x-0.5 -translate-y-0.5 bg-[var(--color-accent)] group-hover:bg-[var(--color-accent-secondary)] transition-colors"
+              className="absolute inset-0 -translate-x-0.5 -translate-y-0.5 bg-[var(--color-accent)] transition-colors"
             />
             <div className="relative w-full h-full overflow-hidden bg-muted border border-border group-hover:border-accent transition-colors">
               <Image
@@ -176,7 +176,6 @@ export default function MilliePage() {
               width={1200}
               height={1200}
               className="w-auto h-auto max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)] object-contain pointer-events-none"
-              onClick={(e) => e.stopPropagation()}
               priority
             />
 

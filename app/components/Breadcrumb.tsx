@@ -1,6 +1,3 @@
-"use client";
-
-import { memo } from "react";
 import NextLink from "next/link";
 import { FolderIcon } from "@/lib/icons";
 
@@ -13,21 +10,21 @@ interface BreadcrumbProps {
   items: BreadcrumbItem[];
 }
 
-export const Breadcrumb = memo(function Breadcrumb({ items }: BreadcrumbProps) {
+export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <nav className="flex items-center gap-3 text-lg font-mono h-10">
+    <nav className="flex items-center gap-3 text-lg h-10">
       <FolderIcon className="w-5 h-5 text-muted-foreground" />
       {items.map((item, index) => (
         <span key={item.label} className="flex items-center gap-3">
           {item.href ? (
             <NextLink
               href={item.href}
-              className="text-muted-foreground hover:text-accent transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors no-underline"
             >
               {item.label}
             </NextLink>
           ) : (
-            <span className="text-foreground">
+            <span className="text-foreground font-semibold">
               {item.label}
             </span>
           )}
@@ -38,4 +35,4 @@ export const Breadcrumb = memo(function Breadcrumb({ items }: BreadcrumbProps) {
       ))}
     </nav>
   );
-});
+}

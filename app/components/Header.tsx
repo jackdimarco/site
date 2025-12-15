@@ -25,7 +25,7 @@ export function Header() {
   const breadcrumbItems = useMemo(() => buildBreadcrumbItems(pathname), [pathname]);
 
   return (
-    <header className="flex items-center justify-between gap-8 w-full">
+    <header className="flex items-center justify-between gap-8 w-full py-5 md:py-6 section-bordered">
       <Breadcrumb items={breadcrumbItems} />
       <ThemeToggle />
     </header>

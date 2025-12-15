@@ -1,27 +1,24 @@
-"use client";
-
-import { memo } from "react";
-import { AsteriskIcon } from "@/lib/icons";
-import { ScrambleText } from "./ScrambleText";
+import Image from "next/image";
 
 interface SectionHeaderProps {
   title: string;
   number: string;
 }
 
-export const SectionHeader = memo(function SectionHeader({
-  title,
-  number,
-}: SectionHeaderProps) {
+export function SectionHeader({ title, number }: SectionHeaderProps) {
   return (
     <h2 className="text-section-heading flex items-center gap-2">
-      <span className="color-block-square">
-        <AsteriskIcon className="w-4 h-4" />
-      </span>
-      <ScrambleText text={title} />
-      <span className="text-xs font-mono text-muted-foreground ml-auto">
-        <ScrambleText text={`[${number}]`} />
+      <Image
+        src="/icon.svg"
+        alt=""
+        width={24}
+        height={24}
+        className="flex-shrink-0"
+      />
+      {title}
+      <span className="text-xs text-muted-foreground ml-auto">
+        [{number}]
       </span>
     </h2>
   );
-});
+}

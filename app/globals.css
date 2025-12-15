@@ -3,98 +3,82 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-  --color-background: #fafaf8;
+  --color-background: #fafafa;
   --color-muted: #eeede9;
   --color-foreground: #1a1a1a;
   --color-muted-foreground: #6b7280;
-  --color-accent: #4001FA;
-  --color-accent-secondary: #ff0080;
+  --color-accent: #0f7f4a;
   --color-accent-foreground: #ffffff;
   --color-border: #d4d4d4;
+  --color-border-faded: rgba(212, 212, 212, 0.5);
 }
 
 .dark {
-  --color-background: #1e1e1e;
-  --color-muted: #2e2e2e;
-  --color-foreground: #ffffff;
-  --color-muted-foreground: #6b7d94;
-  --color-accent: #CCFD01;
-  --color-accent-secondary: #1a6fff;
-  --color-accent-foreground: #000000;
-  --color-border: #29324f;
+  --color-background: #0a0a0a;
+  --color-muted: #1a1a1a;
+  --color-foreground: #fafafa;
+  --color-muted-foreground: #a1a1aa;
+  --color-accent: #0f7f4a;
+  --color-accent-foreground: #ffffff;
+  --color-border: #3a3a3a;
+  --color-border-faded: rgba(58, 58, 58, 0.5);
 }
 
 body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   background-color: var(--color-background);
+  background-image: radial-gradient(
+    circle,
+    var(--color-border-faded) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 12px 12px;
+  background-attachment: fixed;
   color: var(--color-foreground);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .text-heading {
-  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   @apply text-4xl font-bold tracking-tight;
 }
 
 .text-section-heading {
-  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  @apply text-lg font-bold tracking-widest;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  @apply text-lg font-bold tracking-wide;
 }
 
 .text-body {
   @apply text-base;
 }
 
-.color-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-accent);
-  color: var(--color-accent-foreground);
-  padding: 0.25rem 0.5rem;
-  flex-shrink: 0;
-  margin-left: 0;
-  font-weight: 700;
-}
-
-.color-block-square {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-accent);
-  color: var(--color-accent-foreground);
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;
-  margin-left: 0;
-}
-
 .theme-button {
   background-color: transparent;
   color: var(--color-foreground);
-  border: 2px solid var(--color-foreground);
-  opacity: 0.5;
+  border: 1px solid var(--color-border);
   transition: all 0.15s ease;
 }
 
 .theme-button:hover {
   color: var(--color-accent);
   border-color: var(--color-accent);
-  opacity: 1;
 }
 
 a {
-  color: var(--color-accent);
-  text-decoration: none;
+  color: var(--color-foreground);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: all 0.15s ease;
 }
 
 a:hover {
-  color: var(--color-accent-secondary);
+  opacity: 0.7;
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-background);
+  background: var(--color-border);
+  color: var(--color-foreground);
 }
 
 :focus-visible {
@@ -102,27 +86,33 @@ a:hover {
   outline-offset: 2px;
 }
 
-.border-cyber {
+.divider-dotted {
   border: none;
   height: 2px;
   background: repeating-linear-gradient(
-    -45deg,
-    #666666 0,
-    #666666 1px,
-    transparent 1px,
-    transparent 6px
+    to right,
+    var(--color-border) 0,
+    var(--color-border) 3px,
+    transparent 3px,
+    transparent 8px
   );
 }
 
-.border-cyber-secondary {
-  border: none;
-  height: 2px;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--color-accent-secondary) 0,
-    var(--color-accent-secondary) 2px,
-    transparent 2px,
-    transparent 6px
-  );
+.section-bordered {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background);
+  padding: 1rem;
+}
+
+.social-link-button {
+  border: 1px solid var(--color-border);
+  color: var(--color-foreground);
+  text-decoration: none;
+}
+
+.social-link-button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
 }
 

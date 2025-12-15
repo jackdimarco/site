@@ -39,7 +39,7 @@ export const JOBS: Job[] = [
     company: "Idenhaus",
     companyUrl: "https://www.idenhaus.com",
     logo: "/logos/idenhaus_logo.jpg",
-    role: "Software Engineer Intern",
+    role: "Cyber Security Intern",
     period: "2019",
   },
   {

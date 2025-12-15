@@ -107,22 +107,6 @@ export function FolderIcon(props: IconProps) {
   );
 }
 
-export function AsteriskIcon(props: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      {...props}
-    >
-      <line x1="12" y1="2" x2="12" y2="22" strokeWidth={2.5} strokeLinecap="round" />
-      <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" strokeWidth={2.5} strokeLinecap="round" />
-      <line x1="19.07" y1="4.93" x2="4.93" y2="19.07" strokeWidth={2.5} strokeLinecap="round" />
-      <line x1="2" y1="12" x2="22" y2="12" strokeWidth={2.5} strokeLinecap="round" />
-    </svg>
-  );
-}
-
 export function CloseIcon(props: IconProps) {
   return (
     <svg
