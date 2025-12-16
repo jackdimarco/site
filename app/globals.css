@@ -24,6 +24,10 @@
   --color-border-faded: rgba(58, 58, 58, 0.5);
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   background-color: var(--color-background);
@@ -90,13 +94,13 @@ body {
 
 .divider-dotted {
   border: none;
-  height: 2px;
+  height: 1px;
   background: repeating-linear-gradient(
     to right,
     var(--color-border) 0,
-    var(--color-border) 3px,
-    transparent 3px,
-    transparent 8px
+    var(--color-border) 6px,
+    transparent 6px,
+    transparent 14px
   );
 }
 

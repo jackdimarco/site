@@ -32,11 +32,11 @@ export function Experience() {
                   <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-2">
                     <div className="flex items-baseline gap-2">
                       {job.companyUrl ? (
-                        <Link href={job.companyUrl} className="font-semibold">
+                        <Link href={job.companyUrl} className="font-semibold whitespace-nowrap">
                           {job.company}
                         </Link>
                       ) : (
-                        <span className="font-semibold">
+                        <span className="font-semibold whitespace-nowrap">
                           {job.company}
                         </span>
                       )}
@@ -51,7 +51,7 @@ export function Experience() {
                 </div>
               </div>
             </div>
-            {index < JOBS.length - 1 && <div className="divider-dotted" />}
+            {index < JOBS.length - 1 && <div className="divider-dotted ml-1" />}
           </div>
         ))}
       </div>

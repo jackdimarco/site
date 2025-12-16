@@ -32,7 +32,7 @@ export const JOBS: Job[] = [
     company: "Bits of Good",
     companyUrl: "https://www.bitsofgood.org/",
     logo: "/logos/gtbitsofgood_logo.jpeg",
-    role: "Volunteer Software Engineer",
+    role: "Software Engineer",
     period: "2020-21",
   },
   {

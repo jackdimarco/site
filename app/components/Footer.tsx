@@ -1,4 +1,4 @@
-import { GitHubIcon } from "@/lib/icons";
+import { RSSIcon } from "@/lib/icons";
 
 export function Footer() {
   return (
@@ -13,13 +13,11 @@ export function Footer() {
           </p>
         </div>
         <a
-          href="https://github.com/jackdimarco/site"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/feed.xml"
           className="w-10 h-10 aspect-square flex items-center justify-center theme-button flex-shrink-0"
-          aria-label="View source code on GitHub"
+          aria-label="RSS feed"
         >
-          <GitHubIcon className="w-5 h-5" />
+          <RSSIcon className="w-5 h-5" />
         </a>
       </div>
     </footer>

@@ -24,7 +24,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
               {item.label}
             </NextLink>
           ) : (
-            <span className="text-foreground font-semibold">
+            <span className="text-foreground">
               {item.label}
             </span>
           )}

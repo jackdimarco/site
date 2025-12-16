@@ -100,13 +100,10 @@ export default function MilliePage() {
           <button
             key={filename}
             onClick={() => setSelectedImage(filename)}
-            className="relative aspect-square cursor-pointer group focus:outline-none"
+            className="aspect-square cursor-pointer group focus:outline-none"
             aria-label={`View Millie photo ${index + 1}`}
           >
-            <div
-              className="absolute inset-0 -translate-x-0.5 -translate-y-0.5 bg-[var(--color-accent)] transition-colors"
-            />
-            <div className="relative w-full h-full overflow-hidden bg-muted border border-border group-hover:border-accent transition-colors">
+            <div className="w-full h-full overflow-hidden">
               <Image
                 src={`/millie/${filename}`}
                 alt={`Millie photo ${index + 1}`}
