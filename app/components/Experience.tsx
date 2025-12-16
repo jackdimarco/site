@@ -28,24 +28,26 @@ export function Experience() {
                   )}
                 </div>
 
-                <div className="min-w-0 flex-1 relative">
-                  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 pr-20">
-                    {job.companyUrl ? (
-                      <Link href={job.companyUrl} className="font-semibold">
-                        {job.company}
-                      </Link>
-                    ) : (
-                      <span className="font-semibold">
-                        {job.company}
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-2">
+                    <div className="flex items-baseline gap-2">
+                      {job.companyUrl ? (
+                        <Link href={job.companyUrl} className="font-semibold">
+                          {job.company}
+                        </Link>
+                      ) : (
+                        <span className="font-semibold">
+                          {job.company}
+                        </span>
+                      )}
+                      <span className="text-muted-foreground text-sm">
+                        {job.role}
                       </span>
-                    )}
-                    <span className="text-muted-foreground text-sm">
-                      {job.role}
+                    </div>
+                    <span className="text-sm text-muted-foreground whitespace-nowrap">
+                      {job.period}
                     </span>
                   </div>
-                  <span className="absolute right-0 top-0 text-sm text-muted-foreground whitespace-nowrap">
-                    {job.period}
-                  </span>
                 </div>
               </div>
             </div>
