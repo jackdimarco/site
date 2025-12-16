@@ -6,7 +6,7 @@ export function Footer() {
       <div className="flex items-start justify-between gap-3">
         <div className="space-y-1">
           <p className="text-sm text-muted-foreground">
-            v1.0
+            Site v1.0
           </p>
           <p className="text-sm text-muted-foreground">
             Be safe, friend.

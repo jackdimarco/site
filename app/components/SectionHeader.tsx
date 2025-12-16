@@ -2,10 +2,9 @@ import Image from "next/image";
 
 interface SectionHeaderProps {
   title: string;
-  number: string;
 }
 
-export function SectionHeader({ title, number }: SectionHeaderProps) {
+export function SectionHeader({ title }: SectionHeaderProps) {
   return (
     <h2 className="text-section-heading flex items-center gap-2">
       <Image
@@ -16,9 +15,6 @@ export function SectionHeader({ title, number }: SectionHeaderProps) {
         className="flex-shrink-0"
       />
       {title}
-      <span className="text-xs text-muted-foreground ml-auto">
-        [{number}]
-      </span>
     </h2>
   );
 }

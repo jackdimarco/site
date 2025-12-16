@@ -6,7 +6,7 @@ import { JOBS } from "@/lib/data";
 export function Experience() {
   return (
     <section className="space-y-4 py-5 md:py-6 section-bordered">
-      <SectionHeader title="Experience" number="01" />
+      <SectionHeader title="Experience" />
 
       <div>
         {JOBS.map((job, index) => (
@@ -28,26 +28,24 @@ export function Experience() {
                   )}
                 </div>
 
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 md:gap-2">
-                    <div className="flex items-baseline gap-2 flex-wrap">
-                      {job.companyUrl ? (
-                        <Link href={job.companyUrl} className="font-semibold text-sm md:text-base">
-                          {job.company}
-                        </Link>
-                      ) : (
-                        <span className="font-semibold text-sm md:text-base">
-                          {job.company}
-                        </span>
-                      )}
-                      <span className="text-muted-foreground text-xs md:text-sm">
-                        {job.role}
+                <div className="min-w-0 flex-1 relative">
+                  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 pr-20">
+                    {job.companyUrl ? (
+                      <Link href={job.companyUrl} className="font-semibold">
+                        {job.company}
+                      </Link>
+                    ) : (
+                      <span className="font-semibold">
+                        {job.company}
                       </span>
-                    </div>
-                    <span className="text-xs md:text-sm text-muted-foreground whitespace-nowrap md:ml-auto">
-                      {job.period}
+                    )}
+                    <span className="text-muted-foreground text-sm">
+                      {job.role}
                     </span>
                   </div>
+                  <span className="absolute right-0 top-0 text-sm text-muted-foreground whitespace-nowrap">
+                    {job.period}
+                  </span>
                 </div>
               </div>
             </div>

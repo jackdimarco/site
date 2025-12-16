@@ -6,8 +6,8 @@
   --color-background: #fafafa;
   --color-muted: #eeede9;
   --color-foreground: #1a1a1a;
-  --color-muted-foreground: #6b7280;
-  --color-accent: #0f7f4a;
+  --color-muted-foreground: #525252;
+  --color-accent: #158c50;
   --color-accent-foreground: #ffffff;
   --color-border: #d4d4d4;
   --color-border-faded: rgba(212, 212, 212, 0.5);
@@ -18,9 +18,9 @@
   --color-muted: #1a1a1a;
   --color-foreground: #fafafa;
   --color-muted-foreground: #a1a1aa;
-  --color-accent: #0f7f4a;
+  --color-accent: #158c50;
   --color-accent-foreground: #ffffff;
-  --color-border: #3a3a3a;
+  --color-border: #4a4a4a;
   --color-border-faded: rgba(58, 58, 58, 0.5);
 }
 
@@ -64,16 +64,18 @@ body {
   border-color: var(--color-accent);
 }
 
-a {
-  color: var(--color-foreground);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-  transition: all 0.15s ease;
-}
+@layer base {
+  a {
+    color: var(--color-foreground);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: all 0.15s ease;
+  }
 
-a:hover {
-  opacity: 0.7;
+  a:hover {
+    color: var(--color-accent);
+  }
 }
 
 ::selection {
