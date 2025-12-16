@@ -18,6 +18,20 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Jack DiMarco",
   description: "Senior Software Engineer at Salesforce, building AI agents for Commerce. Based in Atlanta, Georgia.",
+  metadataBase: new URL("https://jdimarco.com"),
+  themeColor: "#000000",
+  openGraph: {
+    title: "Jack DiMarco",
+    description: "Senior Software Engineer at Salesforce, building AI agents for Commerce. Based in Atlanta, Georgia.",
+    url: "https://jackdimarco.dev",
+    siteName: "Jack DiMarco",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Jack DiMarco",
+    description: "Senior Software Engineer at Salesforce, building AI agents for Commerce. Based in Atlanta, Georgia.",
+  },
 };
 
 export default function RootLayout({
